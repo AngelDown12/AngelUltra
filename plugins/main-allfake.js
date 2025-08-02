@@ -33,9 +33,9 @@ handler.all = async function (m) {
   //let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://telegra.ph/file/327f6ad853cb4f405aa80.jpg')
 
   //CREADOR Y OTROS
-  global.creador = 'Wa.me/51963318746'
+  global.creador = 'Wa.me/56983073328'
   global.botreal = `${(conn.user.jid == global.conn.user.jid ? '*Bot:* Oficial' : `*SubBot de: ${conn.user.jid.split('@')[0]}*`)}`
-  global.asistencia = 'Wa.me/51963318746'
+  global.asistencia = 'Wa.me/56983073328'
 
   //REACCIONES 
   global.rwait = '🕒'
@@ -57,13 +57,13 @@ handler.all = async function (m) {
   global.mistake = '*✖️ Error en el comando*\n*Por favor, intenta nuevamente más tarde. Si esto persiste envia:*\n> #report El comando (comando) no funciona.';
 
   //ENLACES
-  var group = 'https://chat.whatsapp.com/HqhAoXS8TCcJIn0KrbJZKz'
+  var group = 'https://chat.whatsapp.com/Caj518FwPjHLVmGn48GvhW'
   var web = 'https://shadow-bot.vercel.app/'
-  let instagram = 'https://www.instagram.com/ineffable.mvrco'
+  let instagram = 'https://www.instagram.com/shadowbot.md'
 
   global.redes = [group, web, instagram].getRandom()
 
-  //*
+  /*
   //IMAGEN
   let category = "imagen"
   const db = './src/database/db.json'
@@ -72,8 +72,8 @@ handler.all = async function (m) {
   const randomlink = db_.links[category][random]
   const response = await fetch(randomlink)
   const rimg = await response.buffer()
-  global.icons = rimg//*
-  
+  global.icons = rimg
+  */
 
   //TIEMPO
   var ase = moment().tz('America/Lima'); // Cambia 'America/Lima' por la zona horaria deseada
@@ -121,38 +121,51 @@ handler.all = async function (m) {
   var more = String.fromCharCode(8206)
   global.readMore = more.repeat(850)
 
-  global.packN = `Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN\n\n☁ 𝖲𝖾𝗇𝖽𝗂𝗇𝗀 𝖻𝗒 𝖡𝗈𝗍:\n↳ @${usnamebot}\n🌺 𝖴𝗌𝗎𝖺𝗋𝗂𝗈:`;
+  global.packN = `協会  Sʜʌᴅᴏᴡ′s Cʟᴜʙ  🍁 ࣪ ˖ ∿
+↳ @shadows_club\n\n☁ 𝖲𝖾𝗇𝖽𝗂𝗇𝗀 𝖻𝗒 𝖡𝗈𝗍:\n↳ @${usnamebot}\n🌺 𝖴𝗌𝗎𝖺𝗋𝗂𝗈:`;
   global.authN = `\n↳ @${usname}`;
 
   //FAKES
   global.fkontak = { key: { participants: "0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` } }, "participant": "0@s.whatsapp.net" }
+  /*
+  global.fake = {
+    contextInfo: {
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+        newsletterJid: '120363318267632676@newsletter',
+        newsletterName: "˚₊·͟͟͟͟͟͟͞͞͞͞͞͞𝑺𝒖𝒏𝒇𝒍𝒂𝒓𝒆 - 𝑻𝒆𝒂𝒎 ೃ࿔₊•",
+        serverMessageId: -1
+      }
+    }
+  }*/
 
-  global.idchannel = '120363394571210599@newsletter'
-  global.canalIdM = ["120363394571210599@newsletter", "120363394571210599@newsletter", "120363394571210599@newsletter"]
-  global.canalNombreM = ["Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN", "Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN", "Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN"]
+  //ID CANALES
+  global.idchannel = '120363357231409846@newsletter'
+  global.canalIdM = ["120363357231409846@newsletter", "120363318267632676@newsletter", "120363377595441592@newsletter"]
+  global.canalNombreM = [" 𐚁 ֹ ִ 𝖲𝗁⍺𝖽𑄈𝗐′𝗌 𝖢𝗅𝗎𝖻 ୧ ֹ ִ🌹ᩚ꤬ᰍ", "ꘓꘓ   ໒🌤️ؑ   𝖲𝗎𝗇ẜ𝗅⍺𝗋𝖾   𝖳𝖾⍺𑜀  ୭", "⿻ ׄ ˚. Տ𝗁⍺𝖽ᦅ𝗐  ⚡︎  𝖴𝗅ł𝗋⍺ ׄㅤ🥞ᩧᰰ˚"]
   global.channelRD = await getRandomChannel()
 
   global.icono = [
-    "https://files.catbox.moe/e6k88a.jpg",
-    "https://files.catbox.moe/e6k88a.jpg",
-    "https://files.catbox.moe/e6k88a.jpg",
-    "https://files.catbox.moe/e6k88a.jpg",
-    "https://files.catbox.moe/e6k88a.jpg",
-    "https://files.catbox.moe/e6k88a.jpg",
-    "https://files.catbox.moe/e6k88a.jpg",
-    "https://files.catbox.moe/e6k88a.jpg",
-    "https://files.catbox.moe/e6k88a.jpg",
-    "https://files.catbox.moe/e6k88a.jpg",
-    "https://files.catbox.moe/e6k88a.jpg",
-    "https://files.catbox.moe/e6k88a.jpg",
-    "https://files.catbox.moe/e6k88a.jpg",
-    "https://files.catbox.moe/e6k88a.jpg",
-    "https://files.catbox.moe/e6k88a.jpg",
+    "https://files.catbox.moe/uu9lz5.jpg",
+    "https://files.catbox.moe/0a0e5s.jpg",
+    "https://files.catbox.moe/xe4y9r.jpg",
+    "https://files.catbox.moe/9pm5a8.jpg",
+    "https://files.catbox.moe/qs0h5r.jpg",
+    "https://files.catbox.moe/m78pwx.jpg",
+    "https://files.catbox.moe/ninsr8.jpg",
+    "https://files.catbox.moe/73bgpc.jpg",
+    "https://files.catbox.moe/8aguf5.jpg",
+    "https://files.catbox.moe/g48qfe.jpg",
+    "https://files.catbox.moe/0gtahy.jpg",
+    "https://files.catbox.moe/z2jdlo.jpg",
+    "https://files.catbox.moe/814bhm.jpg",
+    "https://files.catbox.moe/y5l3hq.jpg",
+    "https://files.catbox.moe/kevttt.jpg",
   ].getRandom()
 
   global.urls = [
-    "https://qu.ax/DisEk.jpg",
-    "https://qu.ax/DisEk.jpg",
+    "https://qu.ax/vnPMj.mp4",
+    "https://qu.ax/vnPMj.mp4",
   ];
   let gifUrl = urls[Math.floor(Math.random() * urls.length)];
 
