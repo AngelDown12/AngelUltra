@@ -1,22 +1,78 @@
-//Código desarollado por Semi, https://wa.me/51963318746)
-let handler = async (m, { conn, text, participants }) => {
-  const mime = m.mtype
-  const type = /imageMessage|videoMessage|conversation|extendedTextMessage/.test(mime)
-  if (!m.quoted && type) {
-    if ((mime === 'imageMessage')) {
-      conn.sendMessage(m.chat, { image: await m.download?.(), mentions: participants.map(u => conn.decodeJid(u.id)), caption: text ? text : "", mentions: participants.map(u => conn.decodeJid(u.id)) }, { quoted: m });
-    } else if ((mime === 'videoMessage')) {
-      conn.sendMessage(m.chat, { video: await m.download?.(), mentions: participants.map(u => conn.decodeJid(u.id)), mimetype: 'video/mp4', caption: text ? text : "" }, { quoted: m })
-    } else if ((mime === ("conversation") || ("extendedTextMessage"))) {
-      conn.sendMessage(m.chat, { text: text ? text : "Pᴏʀɴʜᴜʙ: @BʏKɪʟʟᴢN", mentions: participants.map(u => conn.decodeJid(u.id)) }, { quoted: m })
+import { generateWAMessageFromContent } from '@whiskeysockets/baileys'
+
+const handler = async (m, { conn, text, participants }) => {
+  try {
+    const users = participants.map(u => conn.decodeJid(u.id))
+    const q = m.quoted ? m.quoted : m
+    const c = m.quoted ? await m.getQuotedObj() : m
+    const mime = (q.msg || q).mimetype || ''
+    const isMedia = /image|video|sticker|audio/.test(mime)
+
+    const originalCaption = (q.msg?.caption || q.text || '').trim()
+    const finalCaption = text.trim() ? text : originalCaption
+
+    if (isMedia) {
+      const media = await q.download()
+
+      if (q.mtype === 'imageMessage') {
+        await conn.sendMessage(m.chat, {
+          image: media,
+          caption: finalCaption,
+          mentions: users
+        }, { quoted: m })
+
+      } else if (q.mtype === 'videoMessage') {
+        await conn.sendMessage(m.chat, {
+          video: media,
+          caption: finalCaption,
+          mentions: users,
+          mimetype: 'video/mp4'
+        }, { quoted: m })
+
+      } else if (q.mtype === 'audioMessage') {
+        await conn.sendMessage(m.chat, {
+          audio: media,
+          mimetype: 'audio/mpeg',
+          fileName: 'audio.mp3',
+          mentions: users
+        }, { quoted: m })
+
+      } else if (q.mtype === 'stickerMessage') {
+        await conn.sendMessage(m.chat, {
+          sticker: media,
+          mentions: users
+        }, { quoted: m })
+      }
+
+    } else {
+      // Si no es media, manda solo texto con mención
+      const msg = conn.cMod(
+        m.chat,
+        generateWAMessageFromContent(
+          m.chat,
+          { [q.mtype || 'extendedTextMessage']: q.message?.[q.mtype] || { text: finalCaption } },
+          { quoted: m, userJid: conn.user.id }
+        ),
+        finalCaption,
+        conn.user.jid,
+        { mentions: users }
+      )
+      await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
     }
-  } else if (m.quoted) {
-    await conn.sendMessage(m.chat, { forward: m.quoted.fakeObj, mentions: participants.map(u => conn.decodeJid(u.id)) }, { quoted: m })
+
+  } catch (e) {
+    const users = participants.map(u => conn.decodeJid(u.id))
+    const fallbackText = text || ' .n'
+    await conn.sendMessage(m.chat, {
+      text: fallbackText,
+      mentions: users
+    }, { quoted: m })
   }
 }
-handler.help = ['notify', 'hidetag']
-handler.tags = ['adm']
-handler.command = ['hidetag', 'notify', 'n', 'noti', 'notificar', 'notif', 'aviso', 'avisar',]
+
+handler.help = ['hidetag']
+handler.tags = ['group']
+handler.command = /^(hidetag|notify|notificar|noti|n|hidetah|hidet)$/i
 handler.group = true
 handler.admin = true
 
