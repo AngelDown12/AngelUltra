@@ -63,7 +63,7 @@ handler.all = async function (m) {
 
   global.redes = [group, web, instagram].getRandom()
 
-  /*
+  
   //IMAGEN
   let category = "imagen"
   const db = './src/database/db.json'
@@ -73,7 +73,7 @@ handler.all = async function (m) {
   const response = await fetch(randomlink)
   const rimg = await response.buffer()
   global.icons = rimg
-  */
+  
 
   //TIEMPO
   var ase = moment().tz('America/Lima'); // Cambia 'America/Lima' por la zona horaria deseada
