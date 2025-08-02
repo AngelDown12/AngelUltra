@@ -63,7 +63,7 @@ handler.all = async function (m) {
 
   global.redes = [group, web, instagram].getRandom()
 
-  
+  //*
   //IMAGEN
   let category = "imagen"
   const db = './src/database/db.json'
@@ -72,7 +72,7 @@ handler.all = async function (m) {
   const randomlink = db_.links[category][random]
   const response = await fetch(randomlink)
   const rimg = await response.buffer()
-  global.icons = rimg
+  global.icons = rimg//*
   
 
   //TIEMPO
